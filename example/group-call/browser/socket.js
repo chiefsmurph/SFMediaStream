@@ -1,4 +1,4 @@
-var socket = io("/", {transports:['websocket']});
+var socket = io("/phonecall", {transports:['websocket']});
 
 socket.on('welcome', function(data){
 	console.log('welcome', { data });
