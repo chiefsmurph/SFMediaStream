@@ -42,13 +42,13 @@
 		</sf-m>
 
 		<sf-m name="presenter">
-			<div class="app-info">
+			<!-- <div class="app-info">
 				Presenter is for broadcasting to the streamer<br>
 				Note: Adding an effect will also increasing presenter's volume
-			</div>
+			</div> -->
 			<div class="row">
-				<button @click="started ? stop() : start()" class="btn btn-secondary center">{{ started ? "Stop recording" : "Presenter" }}</button>
-				<button @click="addPingPongDelay" class="btn btn-secondary center">{{ effect ? 'Remove' : 'Add' }} an effect</button>
+				<button @click="started ? stop() : start()" class="btn btn-secondary center">{{ started ? "Click to disconnect" : "Click here to connect" }}</button>
+				<!-- <button @click="addPingPongDelay" class="btn btn-secondary center">{{ effect ? 'Remove' : 'Add' }} an effect</button> -->
 			</div>
 			<div class="row little-space">
 				<div class="presenter-status-text">This browser is {{ !bufferHeader ? 'not' : '' }} broadcasting.</div>
@@ -57,12 +57,12 @@
 		</sf-m>
 
 		<sf-m name="streamer">
-			<div class="app-info">Streamer is for listening to the Presenter</div>
-			<div class="row">
+			<!-- <div class="app-info">Streamer is for listening to the Presenter</div> -->
+			<!-- <div class="row">
     			<button @click="start" class="btn btn-secondary center">Streamer</button>
-			</div>
+			</div> -->
 			<div class="row little-space">
-				<div class="col-md-12 text-center">Listening to presenter:</div>
+				<div class="col-md-12 text-center">Listening to these people:</div>
 
 				<div class="col-md-12">
 					{{@if active === false:
