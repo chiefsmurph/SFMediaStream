@@ -45,7 +45,7 @@ socket.on('streamerGone', function(id){
 });
 
 socket.on('newPresenter', presenterId => {
-	console.log('received a new presenter', presenterID);
+	console.log('received a new presenter', presenterId);
 	app.streamer.start(presenterId);
 });
 
