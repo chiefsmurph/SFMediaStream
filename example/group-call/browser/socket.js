@@ -31,7 +31,6 @@ socket.on('bufferHeader', function(data){
 // Handle buffer stream from the presenter to streaming instance
 socket.on('bufferStream', function(data){
 	// From = data.presenterID
-
 	streamer.receiveBuffer(data.presenterID, data.packet);
 });
 
@@ -43,6 +42,11 @@ socket.on('streamerGone', function(id){
 		app.presenter.listener.splice(i, 1);
 		app.debug("Listener with ID:", id, "was removed");
 	}
+});
+
+socket.on('newPresenter', presenterId => {
+	console.log('received a new presenter', presenterID);
+	app.streamer.start(presenterId);
 });
 
 // Handle disconnected presenter

@@ -82,7 +82,11 @@ io.on('connection', function(socket){
 
     // Broadcast the presenter's buffer to every listener
     socket.on('bufferStream', function(packet){
-        presenters[socket.id] = true;
+        if (!presenters[socket.id]) {
+            console.log('new presenter: ', socket.id);
+            socket.broadcast.emit('newPresenter', socket.id);
+            presenters[socket.id] = true;
+        }
         // Return immediately if this user have no listener
         if(socket.listener === undefined)
             return;
