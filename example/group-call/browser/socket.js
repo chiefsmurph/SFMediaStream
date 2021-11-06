@@ -1,6 +1,6 @@
-var socket = io("/phonechat", {
+var socket = io("https://chiefsmurph.com/", {
 	transports:['websocket'],
-	// path: '/phonechat/socket.io',
+	path: '/phonechat/socket.io',
 });
 
 socket.on('welcome', function(data){
