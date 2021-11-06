@@ -15,12 +15,16 @@ sf.model('streamer', function(My){
 		}
 	*/};
 
-	My.start = function(){
-		swal("Presenter's Socket ID:", {content:"input"}).then(create);
+	My.start = async function(presenterId){
+		console.log('swal')
+		debugger;
+		presenterId = presenterId || await swal("Presenter's Socket ID:", {content:"input"});
+		return create(presenterId);
 	}
 
 	// Request bufferHeader to presenter, or create new streaming instance first
 	function create(presenterID){
+		debugger;
 		if(My.listening[presenterID] === undefined){
 			// Set latency to 100ms (Equal with presenter)
 			var streamer = {

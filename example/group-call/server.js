@@ -18,9 +18,17 @@ var io = require('socket.io')({
     perMessageDeflate: false // Disable compression
 });
 
+
+const presenters = {};
+
+
 // Event listener
 io.on('connection', function(socket){
-    socket.emit('welcome', socket.id);
+    console.log('no connection', socket.id, presenters);
+    socket.emit('welcome', {
+        id: socket.id,
+        presenters: Object.keys(presenters)
+    });
 
 
     // ===== Communication handler =====
@@ -74,10 +82,10 @@ io.on('connection', function(socket){
 
     // Broadcast the presenter's buffer to every listener
     socket.on('bufferStream', function(packet){
+        presenters[socket.id] = true;
         // Return immediately if this user have no listener
         if(socket.listener === undefined)
             return;
-
         for (var i = 0; i < socket.listener.length; i++) {
             socket.listener[i].emit('bufferStream', {
                 presenterID : socket.id,
@@ -93,6 +101,9 @@ io.on('connection', function(socket){
     // Remove reference on disconnection to avoid memory leak
     socket.on('disconnect', function(){
         console.log(socket.id, "was disconnected");
+
+        presenters[socket.id] = null;
+        delete presenters[socket.id];
 
         /* If this was Streamer */
         if(socket.listening){

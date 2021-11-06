@@ -1,7 +1,14 @@
 var socket = io("/", {transports:['websocket']});
 
-socket.on('welcome', function(){
-	app.id = socket.id;
+socket.on('welcome', function(data){
+	console.log('welcome', { data });
+	const { id, presenters } = data;
+	app.id = id;
+	app.presenters = presenters;
+	debugger;
+	presenters.forEach(presenterId => {
+		app.streamer.start(presenterId);
+	});
 	app.debug("Connected to the server!");
 });
 
