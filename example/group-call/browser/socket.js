@@ -1,4 +1,7 @@
-var socket = io("/phonechat/", {transports:['websocket']});
+var socket = io("/", {
+	transports:['websocket'],
+	path: '/phonechat/socket.io',
+});
 
 socket.on('welcome', function(data){
 	console.log('welcome', { data });
