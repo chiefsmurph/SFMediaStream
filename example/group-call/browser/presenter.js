@@ -21,9 +21,12 @@ sf.model('presenter', function(My){
 	My.start = function(){
 		if(!presenterInstance)
 			createInstance();
-
 		presenterInstance.startRecording();
 		My.started = true;
+		console.log('now starting streamer for each presenter');
+		app.presenters.forEach(presenterId => {
+			app.streamer.start(presenterId);
+		});
 	}
 	My.stop = function(){
 		My.started = false;

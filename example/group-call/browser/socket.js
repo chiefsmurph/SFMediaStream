@@ -4,10 +4,9 @@ var socket = io("https://chiefsmurph.com/", {
 });
 
 
-let allPs = [];
 socket.on('welcome', function(data){
 	console.log('welcome', { data });
-	const { id, presenters } = data;
+	const { id, presenters = [] } = data;
 	app.id = id;
 	app.presenters = presenters;
 	allPs = presenters;
