@@ -3,15 +3,14 @@ var socket = io("https://chiefsmurph.com/", {
 	path: '/phonechat/socket.io',
 });
 
+
+let allPs = [];
 socket.on('welcome', function(data){
 	console.log('welcome', { data });
 	const { id, presenters } = data;
 	app.id = id;
 	app.presenters = presenters;
-	debugger;
-	presenters.forEach(presenterId => {
-		app.streamer.start(presenterId);
-	});
+	allPs = presenters;
 	app.debug("Connected to the server!");
 });
 
