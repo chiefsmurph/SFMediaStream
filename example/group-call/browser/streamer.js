@@ -16,7 +16,8 @@ sf.model('streamer', function(My){
 	*/};
 
 	My.start = async function(presenterId){
-		presenterId = presenterId || await swal("Presenter's Socket ID:", {content:"input"});
+		console.log('streaming', presenterId);
+		presenterId = presenterId.constructor.name.includes('Event') ? await swal("Presenter's Socket ID:", {content:"input"}) : presenterId;
 		return create(presenterId);
 	}
 

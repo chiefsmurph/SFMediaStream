@@ -34,7 +34,6 @@ socket.on('bufferStream', function(data){
 // Handle disconnected streamer
 socket.on('streamerGone', function(id){
 	var i = app.presenter.listener.indexOf(id);
-
 	if(i !== -1){
 		app.presenter.listener.splice(i, 1);
 		app.debug("Listener with ID:", id, "was removed");
@@ -43,9 +42,7 @@ socket.on('streamerGone', function(id){
 
 socket.on('newPresenter', presenterId => {
 	console.log('received a new presenter', presenterId);
-	if (!presenter.listener.includes(presenterId)) {
-		app.streamer.start(presenterId);
-	}
+	app.streamer.start(presenterId);
 });
 
 // Handle disconnected presenter
