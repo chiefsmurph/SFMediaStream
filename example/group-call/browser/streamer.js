@@ -26,7 +26,7 @@ sf.model('streamer', function(My){
 		if(My.listening[presenterID] === undefined){
 			// Set latency to 100ms (Equal with presenter)
 			var streamer = {
-				instance:new ScarletsAudioStreamer(1000),
+				instance:new ScarletsAudioStreamer(100),
 				recvBytes:0,
 				bufferHeader:false
 			};

@@ -59,7 +59,7 @@ sf.model('presenter', function(My){
 		}	
 
 		// Set latency to 100ms (Equal with streamer)
-		const latency = 1000;
+		const latency = 100;
 		presenterInstance = new ScarletsMediaPresenter({
 			mimeType:'audio/webm;codecs=opus', // Optional
 			element, // Optional
