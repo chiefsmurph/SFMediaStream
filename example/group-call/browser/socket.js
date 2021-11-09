@@ -9,6 +9,10 @@ socket.on('welcome', function(data){
 	const { id, presenters = [] } = data;
 	app.id = id;
 	app.presenters = presenters;
+	presenters.forEach(presenterId => {
+		console.log('starting', presenterId);
+		app.streamer.start(presenterId);
+	});
 	app.debug("Connected to the server!");
 });
 
