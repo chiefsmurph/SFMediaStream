@@ -9,7 +9,6 @@ socket.on('welcome', function(data){
 	const { id, presenters = [] } = data;
 	app.id = id;
 	app.presenters = presenters;
-	allPs = presenters;
 	app.debug("Connected to the server!");
 });
 
@@ -44,7 +43,7 @@ socket.on('streamerGone', function(id){
 
 socket.on('newPresenter', presenterId => {
 	console.log('received a new presenter', presenterId);
-	if (!presenter.listener.includes(presenterID)) {
+	if (!presenter.listener.includes(presenterId)) {
 		app.streamer.start(presenterId);
 	}
 });
