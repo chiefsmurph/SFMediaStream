@@ -24,7 +24,17 @@ const presenters = {};
 
 // Event listener
 io.on('connection', function(socket){
-    console.log('no connection', socket.id, presenters);
+
+
+    const ip = (socket.handshake.headers['x-forwarded-for'] || socket.handshake.address.address).split(',')[0];
+    const userAgent = socket.request.headers['user-agent'];
+
+    console.log('new connection', {
+        ip,
+        userAgent,
+        id: socket.id,
+        presenters
+    });
     socket.emit('welcome', {
         id: socket.id,
         presenters: Object.keys(presenters)
