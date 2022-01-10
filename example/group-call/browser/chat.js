@@ -4,7 +4,7 @@
 const scrollToBottom = () => requestAnimationFrame(() => setTimeout(() => {
     var textarea = document.querySelector('.chatbox');
     textarea.scrollTop = textarea.scrollHeight;
-}, 100));
+}, 300));
 
 sf.model('chat', function(self, root){
     let messages = [];
