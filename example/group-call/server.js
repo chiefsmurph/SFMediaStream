@@ -21,12 +21,13 @@ var io = require('socket.io')({
 
 const presenters = {};
 
+const messages = [];
 
 // Event listener
 io.on('connection', function(socket){
 
 
-    const ip = (socket.handshake.headers['x-forwarded-for'] || socket.handshake.address.address).split(',')[0];
+    const ip = (socket.handshake.headers['x-forwarded-for'] || socket.handshake.address.address || '').split(',')[0];
     const userAgent = socket.request.headers['user-agent'];
 
     console.log('new connection', {
@@ -106,6 +107,20 @@ io.on('connection', function(socket){
                 packet      : packet
             });
         }
+    });
+
+    
+    /// chatttt
+
+    socket.on('getmessages', cb => {
+        cb(messages);
+    });
+
+    socket.on('chatmessage', message => {
+        message.timestamp = Date.now();
+        console.log('received', message);
+        messages.push(message);
+        io.emit('newmessage', message);
     });
 
 

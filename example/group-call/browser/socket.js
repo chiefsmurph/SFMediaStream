@@ -1,6 +1,11 @@
-var socket = io("https://chiefsmurph.com/", {
+// var socket = io("https://chiefsmurph.com/", {
+// 	transports:['websocket'],
+// 	path: '/phonechat/socket.io',
+// });
+
+var socket = io("http://localhost:8000/", {
 	transports:['websocket'],
-	path: '/phonechat/socket.io',
+	path: '/socket.io',
 });
 
 

@@ -85,6 +85,16 @@
 				</div>
 			</div>
 		</sf-m>
+
+		<sf-m name="chat" class="chat">
+			<textarea class="chatbox" value="{{ chatText }}"></textarea>
+			<div>
+				<input value="" sf-bind="chatinput" id="chatinput" placeholder="message goes here">
+				<button @click="sendMessage()" class="btn btn-secondary">Send Message</button>
+			</div>
+			<button @click="setName()" class="btn btn-secondary">Set Your Name</button>
+		</sf-m>
+
 	</div>
 
 	<!-- This app -->
@@ -93,5 +103,7 @@
 	<script src="browser/presenter.js"></script>
 	<script src="browser/streamer.js"></script>
 	<script src="browser/socket.js"></script>
+
+	<script src="browser/chat.js"></script>
 </body>
 </html>
