@@ -17,6 +17,7 @@ sf.model('chat', function(self, root){
             `(${(new Date(timestamp)).toLocaleString()}): `,
             msg
         ].join(' ')).join('\n');
+        scrollToBottom();
     };
 
     self.sendMessage = function(text) {
@@ -25,7 +26,6 @@ sf.model('chat', function(self, root){
         const name = window.localStorage.getItem('name') || 'nameNOTsetYET';
         const msg = self.chatinput;
         self.chatinput = '';
-        scrollToBottom();
         socket.emit('chatmessage', {
                 name,
                 msg
@@ -36,10 +36,7 @@ sf.model('chat', function(self, root){
         const name = window.prompt('what do you want to set your name as for the chat?');
         window.localStorage.setItem('name', name);
     };
-    // self.keyDown = function() {
-    //     console.log('keydown', arguments);
-    // }
-    scrollToBottom();
+    
     document.getElementById('chatinput').addEventListener('keydown', e => {
         if (e.key === 'Enter') {
             self.sendMessage(
