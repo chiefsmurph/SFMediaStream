@@ -1,10 +1,11 @@
 // Scope for <sf-m name="the-app">
 
 
-const scrollToBottom = () => requestAnimationFrame(() => setTimeout(() => {
+const scrollToBottom = () => setTimeout(() => {
+    console.log('scrolling');
     var textarea = document.querySelector('.chatbox');
     textarea.scrollTop = textarea.scrollHeight;
-}, 300));
+}, 300);
 
 sf.model('chat', function(self, root){
     let messages = [];
