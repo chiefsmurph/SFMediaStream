@@ -1,12 +1,12 @@
-// var socket = io("https://chiefsmurph.com/", {
-// 	transports:['websocket'],
-// 	path: '/phonechat/socket.io',
-// });
-
-var socket = io("http://localhost:8000/", {
+var socket = io("https://chiefsmurph.com/", {
 	transports:['websocket'],
-	path: '/socket.io',
+	path: '/phonechat/socket.io',
 });
+
+// var socket = io("http://localhost:8000/", {
+// 	transports:['websocket'],
+// 	path: '/socket.io',
+// });
 
 
 socket.on('welcome', function(data){
